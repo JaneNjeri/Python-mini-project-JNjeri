@@ -204,4 +204,40 @@ def Read_file():
                     print('File does not exist! Check file again.')
     Menu(infile)
                     
+""" This function outputs loaded files, and allows the user to select one to work on. """
 
+def Search_pdb():
+    import os
+    import sys
+    pdbfile_list()
+    
+    if option.upper() in ('R','S','W','I','A','H','Q'):
+        if option.upper() == 'S':
+
+            file_list = pdbfile_list()
+    
+            items = os.listdir('/home/njesh/python-mini-project-JaneNjeri/PDB_files/')
+    
+            file_list = [name for name in items if name.endswith('.pdb')]
+
+            for count, fileName in enumerate(file_list, 0):
+                sys.stdout.write("[%d] %s\n\r" % (count, fileName))
+
+            choice = int(input("Select pdb file[0-%s]: " % count))
+            print(file_list[choice])
+
+            keyword = input('Input a keyword of contents in the file: ')
+            with open(fileName,'rb') as f:
+                try:
+                    for line in f:
+                        try:
+                            line = line.decode('utf-8')
+                        except ValueError:
+                            continue
+                        if keyword in line:
+                            print(keyword)
+                            print('File is read.')
+                            break
+                except (IOError, OSError):
+                    pass
+    Menu(infile)
