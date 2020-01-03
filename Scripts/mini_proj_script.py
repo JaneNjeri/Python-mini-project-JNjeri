@@ -71,7 +71,7 @@ def Menu(pdb,option):
 import sys
 
 def Mainmenu(option):
-    """ This function provides different options for the user to select
+    """ This function provides different options for the user to select.
         Arguments: option
     """
     
@@ -114,6 +114,24 @@ global path
 dikt = {}
 dikt.update({1:'1hab.pdb', 2:'3b3b.pdb', 3:'3k6h.pdb', 4:'4kty.pdb'})
 
+""" This function finds all loaded files. """
+def pdbfile_list():
+    import glob, os
+    os.chdir("../PDB_files")
+    file_list = []
+    count = 0
+    for file in glob.glob("*.pdb"):
+        file_list.append(file)
+        count+=1
+    return file_list, count
+
+""" This function adds loaded files to a list containing the loaded pdb files. """
+def add_file(infile):
+    pdbfile_list = fl_list
+    if infile.endswith('.pdb'):
+        fl_list.append(infile)
+    else:
+        print('Enter a valid file.')
 
 """This function appends pdb files to a dictionary with specific keys and values """
 
@@ -163,27 +181,27 @@ def Read_file():
                         file_added = file_append_dikt(infile)
                         print('Files entered %s' %infile)
                         print(file_added)
+                        add_file(infile)
                     else:
                         if not infile.endswith('.pdb'):
                             print(input('Not the right pdb format! Please re-enter: '))
                             check_existence(infile)
                             print(check_existence(infile))    
-
                     if infile in dikt.values():
-                        def file_path():               
+                        def file_path():
                             path = "/home/njesh/python-mini-project-JaneNjeri/PDB_files"
-                            for root, dirs, files in os.walk(path, onerror=None):
+                            for files in os.walk(path, onerror=None):
                                 for infile in files:
-                                    file_path = os.path.join(root, infile)
+                                    file_path = os.path.join(path, infile)
                         print("File %s is loaded, do you want to replace the file?" %infile)
                         replace = input("Yes/No: ")
                         outfile = infile
-                        Yes = infile.replace(infile, outfile)
-                        if replace == Yes:
-                            print("Yaay! File is replaced")
-                        else:
-                            print("File does not exist")
+                        replace = replace.upper()
+                        print(infile.replace(infile, outfile))
+                    else:
+                        print('File does not exist! Check file again.')
                 except:
                     print('File does not exist! Check file again.')
+    Menu(infile)
                     
 
