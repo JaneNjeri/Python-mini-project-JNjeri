@@ -139,9 +139,9 @@ def check_existence(infile):    #checking if a file exists in the PDB_files dire
                     file_path = os.path.join(path, infile)
         print("File %s is loaded, do you want to replace the file?" %infile)
         replace = input("Yes/No: ")
+        outfile = infile
         replace = replace.upper()
-        replace = infile.replace(infile, infile)
-        print('File is replaced')
+        print(infile.replace(infile, outfile))
     else:
         print('File does not exist! Check file again.')
     Menu()
