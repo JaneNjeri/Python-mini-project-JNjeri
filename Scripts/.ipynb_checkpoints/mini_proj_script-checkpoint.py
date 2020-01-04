@@ -247,6 +247,9 @@ def Search_pdb():
                             print(keyword)
                             print('File is read.')
                             break
+                        else:
+                            print('Enter a valid keyword')
+                            break
                 except (IOError, OSError):
                     pass
     Menu(infile)
