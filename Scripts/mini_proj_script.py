@@ -114,28 +114,32 @@ global path
 dikt = {}
 dikt.update({1:'1hab.pdb', 2:'3b3b.pdb', 3:'3k6h.pdb', 4:'4kty.pdb'})
 
-""" This function finds all loaded files. """
+
 def pdbfile_list():
+    """ This function finds all loaded files. """
+    
     import glob, os
     os.chdir("../PDB_files")
     file_list = []
-    count = 0
     for file in glob.glob("*.pdb"):
         file_list.append(file)
-        count+=1
-    return file_list, count
+    return file_list
 
-""" This function adds loaded files to a list containing the loaded pdb files. """
+
 def add_file(infile):
-    pdbfile_list = fl_list
+    """ This function adds loaded files to a list containing the loaded pdb files. """
+    
+    fl_list = list(pdbfile_list())
     if infile.endswith('.pdb'):
         fl_list.append(infile)
     else:
         print('Enter a valid file.')
+    return fl_list
 
-"""This function appends pdb files to a dictionary with specific keys and values """
 
 def file_append_dikt(infile):  #adding files that are loaded in a dictionary
+    """This function appends pdb files to a dictionary with specific keys and values """
+    
     dikt = {}
     with open(infile, 'r') as file:
         for i in file:
@@ -144,11 +148,19 @@ def file_append_dikt(infile):  #adding files that are loaded in a dictionary
                 key, value = line[0], line[1]
                 dikt[key] = value
     print(dikt)
-                   
+    
+# pdb_dikt = {'1hab.pdb':1, '3b3b.pdb':2, '3k6h.pdb':3, '4kty.pdb':4}
+# def file_append_dikt(infile,number):
+#     if infile in pdb_dikt:
+#         print('Error! File is already loaded')
+#     else:
+#         pdb_dikt[infile] = number
+#     return pdb_dikt
 
-""" This function checks if the pdb file exists and loads it to a specific dictionary """
 
 def check_existence(infile):    #checking if a file exists in the PDB_files directory       
+    """ This function checks if the pdb file exists and loads it to a specific dictionary """
+    
     if infile in dikt.values():
         def file_path():               
             path = "/home/njesh/python-mini-project-JaneNjeri/PDB_files"
@@ -162,12 +174,11 @@ def check_existence(infile):    #checking if a file exists in the PDB_files dire
         print(infile.replace(infile, outfile))
     else:
         print('File does not exist! Check file again.')
-    Menu()
-        
+    Menu(infile)
 
-""" This function loads a pdb file and reads contents for analysis """
-
+    
 def Read_file():
+    """ This function loads a pdb file and reads contents for analysis """
     
     from file_append_dikt import file_append_dikt
     from check_existence import check_existence
@@ -187,26 +198,24 @@ def Read_file():
                             print(input('Not the right pdb format! Please re-enter: '))
                             check_existence(infile)
                             print(check_existence(infile))    
+                        
                     if infile in dikt.values():
-                        def file_path():
-                            path = "/home/njesh/python-mini-project-JaneNjeri/PDB_files"
-                            for files in os.walk(path, onerror=None):
-                                for infile in files:
-                                    file_path = os.path.join(path, infile)
                         print("File %s is loaded, do you want to replace the file?" %infile)
                         replace = input("Yes/No: ")
                         outfile = infile
                         replace = replace.upper()
                         print(infile.replace(infile, outfile))
+                        print('File replaced.')
                     else:
-                        print('File does not exist! Check file again.')
+                        print('File does not exist! Check file again.') 
                 except:
                     print('File does not exist! Check file again.')
     Menu(infile)
                     
-""" This function outputs loaded files, and allows the user to select one to work on. """
 
 def Search_pdb():
+    """ This function outputs loaded files, and allows the user to select one to work on. """
+    
     import os
     import sys
     pdbfile_list()
