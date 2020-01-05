@@ -1,15 +1,47 @@
 #! usr/bin/python
 
-""" This section initializes the program,and calls in the Mainmenu """
+#Options to analyze PDB files
+#import sys allows you to use the sys.exit command to quit/logout of the program
+import sys
 
-# No pdb file at start
-pdb = "None"
+def Mainmenu(option):
+    """ This function provides different options for the user to select.
+        Arguments: option
+    """
+    
+    global path
+    
+    print("************MAIN MENU**************")
 
-# Importing the start module
-from Menu import Mainmenu
+    choice = input(""" Please enter your choice: 
+                        [R]: Enter name of a PDB file 
+                        [S]: Search for PDB files
+                        [W]: Write out PDB files (PDB files in existence) 
+                        [I]: Information on PDB files
+                        [A]: Alignment
+                        [H]: Help
+                        [Q]: Quit
 
-# Initializing the program by calling the Mainmenu function
-Mainmenu(option)
+                        """)
+
+    if choice.upper() in ('R','S','W','I','A','H','Q'):
+        if choice.upper() == "R":
+            print('Enter name of pdb file: ')
+        elif choice.upper() == 'S':
+            print('Search for a pdb file: ')
+        elif choice.upper() == 'W':
+            print('Read in pdb files: ')
+        elif choice.upper() == 'I':
+            print('Give a list of pdb files: ')
+        elif choice.upper() == 'A':
+            print('Align sequences from two PDB files')
+        elif choice.upper() == 'H':
+            print('Lists all options and gives a brief description')
+        elif choice.upper() == 'Q':
+            sys.exit
+    else:
+        print('You must only enter R, S, W, I, A, H or Q. Please try again')
+        choice = input('Please enter your choice: ')
 
 
 def Menu(pdb,option):
@@ -62,61 +94,28 @@ def Menu(pdb,option):
     # Initializing the Mainmenu function
     Mainmenu(option)
          
-    globals()['option'] = input()
+#     globals()['option'] = input()
     
-    
-
-#Options to analyze PDB files
-#import sys allows you to use the sys.exit command to quit/logout of the program
-import sys
-
-def Mainmenu(option):
-    """ This function provides different options for the user to select.
-        Arguments: option
-    """
-    
-    global path
-    
-    print("************MAIN MENU**************")
-
-    choice = input(""" Please enter your choice: 
-                        [R]: Enter name of a PDB file 
-                        [S]: Search for PDB files
-                        [W]: Write out PDB files (PDB files in existence) 
-                        [I]: Information on PDB files
-                        [A]: Alignment
-                        [H]: Help
-                        [Q]: Quit
-
-                        """)
-
-    if choice.upper() in ('R','S','W','I','A','H','Q'):
-        if choice.upper() == "R":
-            print('Enter name of pdb file: ')
-        elif choice.upper() == 'S':
-            print('Search for a pdb file: ')
-        elif choice.upper() == 'W':
-            print('Read in pdb files: ')
-        elif choice.upper() == 'I':
-            print('Give a list of pdb files: ')
-        elif choice.upper() == 'A':
-            print('Align sequences from two PDB files')
-        elif choice.upper() == 'H':
-            print('Lists all options and gives a brief description')
-        elif choice.upper() == 'Q':
-            sys.exit
-    else:
-        print('You must only enter R, S, W, I, A, H or Q. Please try again')
-        choice = input('Please enter your choice: ')
         
-        
+""" This section initializes the program,and calls in the Mainmenu """
+
+# No pdb file at start
+pdb = "None"
+
+# Importing the start module
+from Menu import Mainmenu
+
+# Initializing the program by calling the Mainmenu function
+Mainmenu(option)
+
+     
 global path   
 dikt = {}
 dikt.update({1:'1hab.pdb', 2:'3b3b.pdb', 3:'3k6h.pdb', 4:'4kty.pdb'})
 
 
 def pdbfile_list():
-    """ This function finds all loaded files. """
+    """ This function finds all files loaded in the PDB_files folder. """
     
     import glob, os
     os.chdir("../PDB_files")
