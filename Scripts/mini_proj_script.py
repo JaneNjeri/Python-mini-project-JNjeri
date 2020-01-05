@@ -213,9 +213,41 @@ def Read_file():
     Menu(infile)
                     
 
-def Search_pdb():
-    """ This function outputs loaded files, and allows the user to select one to work on. """
+def Get_seqres(infile,outfile):
+    """ This function extracts seqres sequences in a pdb file and outputs it to a text file. """
     
+    seq_list = []
+    with open(infile,'r') as file:
+        for line in file:
+            if line.startswith('SEQRES'):
+                line_split = line.split()[4]
+                seq_list.append(line_split)
+    with open(outfile, 'w') as outfile:
+        for i in seq_list:
+            outfile.write(i)
+        print('Sequences successfully written!')
+
+import re
+def glyc_sites(aa_seq):
+    """ This function finds glycosylation sites given G or Y or L then A then P or F or W the TLVGMI as motifs
+    given an amino acid sequence. """
+    
+    pattern = re.compile(r'[GYL]A[PFW][TLVGMI]')
+    matches = pattern.finditer(aa_seq)
+    for match in matches:
+        print(match)
+        
+    return aa_seq
+
+def check_glycSites(infile):
+    """ This function checks the glycosylation sites of a protein sequence in a given file. """
+    
+    with open(infile, 'r') as myfile:
+        for i in myfile:
+            glyc_sites(i)
+            print(i)
+
+def Search_pdb():
     import os
     import sys
     pdbfile_list()
@@ -229,14 +261,14 @@ def Search_pdb():
     
             file_list = [name for name in items if name.endswith('.pdb')]
 
-            for count, fileName in enumerate(file_list, 0):
-                sys.stdout.write("[%d] %s\n\r" % (count, fileName))
+            for count, infile in enumerate(file_list, 0):
+                sys.stdout.write("[%d] %s\n\r" % (count, infile))
 
             choice = int(input("Select pdb file[0-%s]: " % count))
             print(file_list[choice])
 
             keyword = input('Input a keyword of contents in the file: ')
-            with open(fileName,'rb') as f:
+            with open(infile,'rb') as f:
                 try:
                     for line in f:
                         try:
@@ -252,4 +284,8 @@ def Search_pdb():
                             break
                 except (IOError, OSError):
                     pass
+                                            
+                Get_seqres(infile,outfile)
+                check_glycSites(infile)
+                        
     Menu(infile)
