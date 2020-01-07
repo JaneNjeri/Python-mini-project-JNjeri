@@ -212,18 +212,19 @@ def Read_file():
     Menu(infile)
                     
 
-def Get_seqres(infile,outfile):
+def Get_seqres(infile, outfile):
     """ This function extracts seqres sequences in a pdb file and outputs it to a text file. """
-    
-    seq_list = []
+    import os
     with open(infile,'r') as file:
+        seq_list = []
         for line in file:
             if line.startswith('SEQRES'):
-                line_split = line.split()[4]
+                line_split = line.split()[4:]
                 seq_list.append(line_split)
-    with open(outfile, 'w') as outfile:
+    filepath = os.path.join('/home/njesh/python-mini-project-JaneNjeri/Results', outfile)
+    with open(filepath, 'w') as outfile:
         for i in seq_list:
-            outfile.write(i)
+            outfile.writelines(i)
         print('Sequences successfully written!')
 
 import re
