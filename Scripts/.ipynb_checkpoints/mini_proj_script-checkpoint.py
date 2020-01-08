@@ -118,7 +118,7 @@ def pdbfile_list():
     """ This function finds all files loaded in the PDB_files folder. """
     
     import glob, os
-    os.chdir("../PDB_files")
+    os.chdir("../Data")
     file_list = []
     for file in glob.glob("*.pdb"):
         file_list.append(file)
@@ -162,7 +162,7 @@ def check_existence(infile):    #checking if a file exists in the PDB_files dire
     
     if infile in dikt.values():
         def file_path():               
-            path = "/home/njesh/python-mini-project-JaneNjeri/PDB_files"
+            path = "/home/njesh/python-mini-project-JaneNjeri/Data"
             for files in os.walk(path, onerror=None):
                 for infile in files:
                     file_path = os.path.join(path, infile)
@@ -245,7 +245,7 @@ def check_glycSites(infile):
     with open(infile, 'r') as myfile:
         for i in myfile:
             glyc_sites(i)
-            print(i)
+#             print(i)
 
 def Search_pdb():
     import os
@@ -257,7 +257,7 @@ def Search_pdb():
 
             file_list = pdbfile_list()
     
-            items = os.listdir('/home/njesh/python-mini-project-JaneNjeri/PDB_files/')
+            items = os.listdir('/home/njesh/python-mini-project-JaneNjeri/Data/')
     
             file_list = [name for name in items if name.endswith('.pdb')]
 
