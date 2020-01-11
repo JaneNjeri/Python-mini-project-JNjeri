@@ -6,6 +6,13 @@
 def Mainmenu():
     """ This function provides different options for the user to select. """
     
+    from Read_file import Read_file
+    from Search_file import Search_file
+    from Write_file import Write_file
+    from Infor_file import Infor_file
+    from Align_2files import Align_2files
+    from Help_file import Help_file
+    
     import sys
     global path
     

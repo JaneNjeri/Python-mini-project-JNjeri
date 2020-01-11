@@ -26,7 +26,8 @@ def coord_atoms():
     with open(filepath1, 'w') as outfile:
         for i in a_list:
             outfile.writelines(i)
-        print('Done!') 
+        print('Done!')
+        print(i)
         
 def write_backbone_atoms():
     """ This function write out coordinates for all backbone atoms (CA, C, N, O), in PDB file """
@@ -46,6 +47,7 @@ def write_backbone_atoms():
         for i in backbone_list:
             outfile.writelines(i)
         print('Done!')
+        print(i)
         
 def write_CA_atoms():
     """ This function write out coordinates for all alpha-carbon atoms (CA), in a PDB file. """
@@ -65,6 +67,7 @@ def write_CA_atoms():
         for i in ca_list:
             outfile.writelines(i)
         print('Done!')
+        print(i)
         
 def write_SEQRES_fasta():
     """ This function extracts seqres sequences in a pdb file and outputs it to a fasta file. """
@@ -99,6 +102,7 @@ def write_SEQRES_fasta():
         with open(filepath2, 'w') as output:
             for i in file:
                 output.writelines('>' + header + '\n' + i)
+                print('>' + header + '\n' + i)
         print('Fasta file generated!')
         
 def write_coord_seq():
@@ -135,6 +139,7 @@ def write_coord_seq():
         with open(filepath2, 'w') as output:
             for i in file:
                 output.writelines('>' + header + '\n' + i)
+                print('>' + header + '\n' + i)
         print('Fasta file generated!')
         
 def write_align_seq():
@@ -191,6 +196,7 @@ def write_align_seq():
         with open(filepath3, 'w') as output:
             for i in file:
                 output.writelines('>' + header + '\n' + i)
+                print('>' + header + '\n' + i)
         print('Fasta file generated!')
         
 
@@ -211,7 +217,7 @@ def submenu1():
         if option.lower() == 'q':
             sys.exit()
         elif option.lower() == 'b':
-            return mainmenu()
+            return Write_mainmenu()
         elif option == '1':
             p = coord_atoms()
         elif option == '2':
@@ -237,7 +243,7 @@ def submenu2():
         if option.lower() == 'q':
             sys.exit()
         elif option.lower() == 'b':
-            return mainmenu()
+            return Write_mainmenu()
         elif option == '1':
             j = write_SEQRES_fasta()
         elif option == '2':
@@ -250,14 +256,14 @@ def submenu2():
 
 
 ##main-options
-def mainmenu():
-    """ This function calls out the main-menu for writing out PDB files. """
+def Write_mainmenu():
+    """ This function calls out the write main-menu for writing out PDB files. """
     
     import sys
     d = ''
     msg = ''    
     while d == '':
-        print('\nM A I N   M E N U')
+        print('\nWRITE M A I N   M E N U')
         print('1. Write out coordinate file')
         print('2. Write out sequence(Fasta format)')
         print('q. Quit')
@@ -274,7 +280,7 @@ def mainmenu():
             print ('Invalid selection!')
     return msg, d    
 
-message, action = mainmenu()
+message, action = Write_mainmenu()
 
 print ('\nMessage: ', message)
 print ('Action: ', action)
@@ -304,6 +310,6 @@ def Write_file():
             
     return choice
     choice = infile
-    mainmenu()
+    Write_mainmenu()
     
     Mainmenu()

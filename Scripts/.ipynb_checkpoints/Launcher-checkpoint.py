@@ -1,13 +1,11 @@
 #! usr/bin/python
 
-
-""" This section initializes the program,and calls in the Mainmenu """
-
-# No pdb file at start
-pdb = "None"
+""" This section initializes the program,and calls in the Menu """
 
 # Importing the start module
-from Menu import Mainmenu
 
-# Initializing the program by calling the Mainmenu function
-Mainmenu()
+from Menu import Menu
+
+
+# Initializing the program by calling the Menu function
+Menu()
