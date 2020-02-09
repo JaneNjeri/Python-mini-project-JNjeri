@@ -120,10 +120,10 @@ def Infor_menu():
             print ('Invalid selection!')
     return msg, d    
 
-message, action = Infor_menu()
+# message, action = Infor_menu()
 
-print ('\nMessage: ', message)
-print ('Action: ', action)
+# print ('\nMessage: ', message)
+# print ('Action: ', action)
 
 def Infor_file():
     """ This function Displays information in the PDB files, in terms of the portions defining the file.

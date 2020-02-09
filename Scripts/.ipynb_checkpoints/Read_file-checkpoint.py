@@ -62,6 +62,7 @@ def check_existence():    #checking if a file exists in the PDB_files directory
 def Read_file():
     """ This function loads a pdb file and reads contents for analysis """
     
+    import os
     choice = input('Enter name of pdb file: ')
     filepath = os.path.join('/home/njesh/python-mini-project-JaneNjeri/Data', choice)
     with open(filepath, 'r')as pdb:

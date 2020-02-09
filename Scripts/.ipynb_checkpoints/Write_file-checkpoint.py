@@ -217,7 +217,7 @@ def submenu1():
         if option.lower() == 'q':
             sys.exit()
         elif option.lower() == 'b':
-            return Write_mainmenu()
+            return Write_menu()
         elif option == '1':
             p = coord_atoms()
         elif option == '2':
@@ -243,7 +243,7 @@ def submenu2():
         if option.lower() == 'q':
             sys.exit()
         elif option.lower() == 'b':
-            return Write_mainmenu()
+            return Write_menu()
         elif option == '1':
             j = write_SEQRES_fasta()
         elif option == '2':
@@ -256,14 +256,14 @@ def submenu2():
 
 
 ##main-options
-def Write_mainmenu():
+def Write_menu():
     """ This function calls out the write main-menu for writing out PDB files. """
     
     import sys
     d = ''
     msg = ''    
     while d == '':
-        print('\nWRITE M A I N   M E N U')
+        print('\nW R I T E   M E N U')
         print('1. Write out coordinate file')
         print('2. Write out sequence(Fasta format)')
         print('q. Quit')
@@ -280,10 +280,10 @@ def Write_mainmenu():
             print ('Invalid selection!')
     return msg, d    
 
-message, action = Write_mainmenu()
+# message, action = Write_menu()
 
-print ('\nMessage: ', message)
-print ('Action: ', action)
+# print ('\nMessage: ', message)
+# print ('Action: ', action)
 
 #the write function
 
@@ -310,6 +310,6 @@ def Write_file():
             
     return choice
     choice = infile
-    Write_mainmenu()
+    Write_menu()
     
     Mainmenu()
