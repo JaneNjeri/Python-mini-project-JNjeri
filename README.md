@@ -29,6 +29,6 @@ To start anayzing contents of a pdb file run `Launcher.py`.
 ## Disclaimer
 The alignment option does not clearly depict the alignment of long sequences. This work is underway, and should soon be out. 
 
-**All in all enjoy**
+**All in all enjoy!**
 
 
