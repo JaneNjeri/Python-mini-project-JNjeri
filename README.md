@@ -27,7 +27,7 @@ The packages are:
 To start anayzing contents of a pdb file run `Launcher.py`.
 
 ## Disclaimer
-The alignment option does not clearly depict the alignment of long sequences. This section will be handled, and should soon be updated. I welcome any contribution in making the program better :hugging_face:.
+The alignment option does not clearly depict the alignment of long sequences. This section will be handled, and should soon be updated. I welcome any contribution in making the program better 😃.
 
 **All in all enjoy!**
 
