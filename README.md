@@ -1,11 +1,11 @@
 # Python-mini-project
-Mini-project for the Introduction to Programming for Biologist class at Pwani University.
+Mini-project for the Introduction to Programming for Biologist module at Pwani University for the master's in Bioinformatics class.
 
 ## Data
-Contain different pdb files you can use for the analysis.
+This directory contains different pdb files you can use for the analysis.
 
 ## Scripts 
-Contain several modules that run the analysis of pdb files.
+Contains several modules that run the analysis of pdb files.
 
 ## Results
 Location of pdb files following analysis.
@@ -27,7 +27,7 @@ The packages are:
 To start anayzing contents of a pdb file run `Launcher.py`.
 
 ## Disclaimer
-The alignment option does not clearly depict the alignment of long sequences. This work is underway, and should soon be out. 
+The alignment option does not clearly depict the alignment of long sequences. This section will be handled, and should soon be updated. I welcome any contribution in making the program better :hugging_face:.
 
 **All in all enjoy!**
 
